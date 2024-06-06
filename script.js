@@ -1,9 +1,33 @@
 
+let currentId = 0;
+
 document.getElementById('pokemonInput').addEventListener('keydown', function(event){
     if(event.key === 'Enter'){
         searchPokemon();
     }
 });
+
+document.getElementById('up-button').addEventListener('click', function(){
+    currentId = currentId + 1;
+    searchPokemonById(currentId);
+});
+
+document.getElementById('down-button').addEventListener('click', function(){
+    currentId = currentId - 1;
+    searchPokemonById(currentId);
+});
+
+function searchPokemonById(id){
+    fetch('https://pokeapi.co/api/v2/pokemon/' + id).then(response => {
+        if(!response.ok){
+            clearScreen();
+            return;
+        }
+        return response.json();
+    }).then(data => {
+        updatePokedexStats(data);
+    });
+};
 
 function searchPokemon(){
     const pokemon = document.getElementById('pokemonInput').value;
@@ -48,6 +72,8 @@ async function updatePokedexStats(data){
 
     document.getElementById('typeOne').textContent = typeOne;
     document.getElementById('typeTwo').textContent = typeTwo;
+
+    currentId = pokemonNumber;
 };
 
 async function getSpeciesData(pokemon, desiredStat) {
@@ -83,7 +109,7 @@ function getGeneration(generation){
             return 'Generation 6';
         case 'generation-vii':
             return 'Generation 7';
-        case 'generation-vii':
+        case 'generation-viii':
             return 'Generation 8';
         case 'generation-ix':
             return 'Generation 9';
@@ -91,6 +117,25 @@ function getGeneration(generation){
             return;
     }
 };
+
+function clearScreen(){
+    currentId = 0;
+
+    var image = document.getElementById('pokemon-image');
+    image.src = '';
+
+    document.getElementById('height').textContent = 'Height: --';
+    document.getElementById('weight').textContent = 'Weight: --';
+
+    document.getElementById('pokemonName').textContent = 'Name: --';
+    document.getElementById('pokedexId').textContent = 'Pokedex Id: --';
+    document.getElementById('baseExperience').textContent = 'Base Experience: --';
+    document.getElementById('generation').textContent = 'Generation: --';
+    document.getElementById('color').textContent = 'Color: --';
+
+    document.getElementById('typeOne').textContent = '--';
+    document.getElementById('typeTwo').textContent = '--';
+}
 
 function getTypes(types){
     let listOfTypes = [];
