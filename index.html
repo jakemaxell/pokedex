@@ -1,22 +1,73 @@
 <!DOCTYPE html>
 <html lang="en">
-
+    
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Search Bar Project</title>
+    <title>Pokédex</title>
     <link rel="stylesheet" href="styles.css">
 </head>
 
 <body>
+    <div class="pokedex">
 
-    <div class="image-container">
-        <img id="pokemon-image" src="">
-    </div>
+        <div class="pokedex-left">
+            <div class="pokedex-header">
+                <div class="light blue"></div>
+                <div class="light red"></div>
+                <div class="light yellow"></div>
+                <div class="light green"></div>
+            </div>
 
-    <div class="search-container">
-        <input type="text" id="search-bar" placeholder="Type your search here...">
-        <button id="search-button">Search</button>
+            <div class="pokedex-screen">
+                <img id="pokemon-image" src="">
+            </div>
+
+            <div class="pokedex-details">
+                <p id="height">Height: --</p>
+                <p id="weight">Weight: --</p>
+            </div>
+        </div>
+
+        <div class="pokedex-right">
+
+            <div class="pokedex-info">
+                <p id="pokemonName">Name: --</p>
+                <p id="pokedexId">Pokedex Id: --</p>
+                <p id="baseExperience">Base Experience: --</p>
+                <p id="generation">Generation: --</p>
+                <p id="color">Color: --</p>
+            </div>
+
+            <div class="pokedex-buttons">
+                <div class="button-row">
+                    <div class="button"></div>
+                    <div class="button"></div>
+                    <div class="button"></div>
+                    <div class="button"></div>
+                </div>
+
+                <div class="button-row">
+                    <div class="button"></div>
+                    <div class="button"></div>
+                    <div class="button"></div>
+                    <div class="button"></div>
+                </div>
+
+            </div>
+
+            <div class="pokedex-types">
+                <p class="type" id="typeOne">--</p>
+                <p class="type" id="typeTwo">--</p>
+            </div>
+
+            <div class="pokedex-input">
+                <input type="text" id="pokemonInput" placeholder="Enter Pokémon name or ID">
+                <button onclick="searchPokemon()">Search</button>
+            </div>
+
+        </div>
+
     </div>
 
     <script src="script.js"></script>
