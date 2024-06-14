@@ -30,7 +30,7 @@ function searchPokemonById(id){
 };
 
 function searchPokemon(){
-    const pokemon = document.getElementById('pokemonInput').value;
+    const pokemon = document.getElementById('pokemonInput').value.toLowerCase();
     fetch('https://pokeapi.co/api/v2/pokemon/' + pokemon).then(response => {
         if(!response.ok){
             alert('There was an issue with your request. . .');
